@@ -33,4 +33,8 @@ public class LoginFragment extends Fragment {
         ButterKnife.inject(this, view);
         return view;
     }
+
+    public static LoginFragment getInstance() {
+        return new LoginFragment();
+    }
 }
