@@ -16,13 +16,15 @@ import butterknife.InjectView;
 /**
  * Created by juancho on 13/05/16.
  */
-public class LoginFragment extends Fragment {
+public class LoginFragment extends Fragment implements LoginContract.View {
 
     @InjectView(R.id.input_email)
     EditText mInputEmail;
 
     @InjectView(R.id.input_password)
     EditText mInputPassword;
+
+    private LoginPresenter mPresenter;
 
     @Nullable
     @Override
@@ -32,6 +34,12 @@ public class LoginFragment extends Fragment {
         view = inflater.inflate(R.layout.fragment_login, container, false);
         ButterKnife.inject(this, view);
         return view;
+    }
+
+    @Override
+    public void onActivityCreated(Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+        this.mPresenter = new LoginPresenter(this);
     }
 
     public static LoginFragment getInstance() {
