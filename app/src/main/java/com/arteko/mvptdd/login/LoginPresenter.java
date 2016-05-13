@@ -3,7 +3,7 @@ package com.arteko.mvptdd.login;
 /**
  * Created by juancho on 13/05/16.
  */
-public class LoginPresenter {
+public class LoginPresenter implements LoginContract.Actions {
 
     private LoginContract.View mView;
 

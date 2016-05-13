@@ -24,7 +24,7 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     @InjectView(R.id.input_password)
     EditText mInputPassword;
 
-    private LoginPresenter mPresenter;
+    private LoginContract.Actions mActionsListener;
 
     @Nullable
     @Override
@@ -39,7 +39,7 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        this.mPresenter = new LoginPresenter(this);
+        this.mActionsListener = new LoginPresenter(this)
     }
 
     public static LoginFragment getInstance() {
