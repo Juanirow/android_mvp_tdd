@@ -3,4 +3,5 @@
     <string name="email">Email</string>
     <string name="password">Password</string>
     <string name="login">login</string>
+    <string name="not_null">Can not be null</string>
 </resources>

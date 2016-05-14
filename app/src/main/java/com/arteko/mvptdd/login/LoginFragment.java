@@ -12,6 +12,7 @@ import com.arteko.mvptdd.R;
 
 import butterknife.ButterKnife;
 import butterknife.InjectView;
+import butterknife.OnClick;
 
 /**
  * Created by juancho on 13/05/16.
@@ -53,6 +54,7 @@ public class LoginFragment extends Fragment implements LoginContract.View {
 
     @Override
     public void onErrorEmailNull() {
+        this.mInputEmail.setError(getString(R.string.not_null));
     }
 
     @Override
@@ -62,6 +64,12 @@ public class LoginFragment extends Fragment implements LoginContract.View {
 
     @Override
     public void onErrorPasswordNull() {
-
+        this.mInputPassword.setError(getString(R.string.not_null));
     }
+
+    @OnClick(R.id.btn_login)
+    public void onClickLoginBtn(){
+        this.mActionsListener.onClickLoginButton();
+    }
+
 }
