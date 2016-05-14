@@ -7,9 +7,13 @@ public class LoginContract {
 
     public interface View {
 
+        String getEmail();
+
+        void onErrorEmailNull();
     }
 
     public interface Actions{
 
+        void onClickLoginButton();
     }
 }

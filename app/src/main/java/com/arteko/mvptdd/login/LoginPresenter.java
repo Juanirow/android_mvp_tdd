@@ -12,4 +12,9 @@ public class LoginPresenter implements LoginContract.Actions {
         this.mView = mView;
         this.mInteractor = mInteractor;
     }
+
+    @Override
+    public void onClickLoginButton() {
+
+    }
 }

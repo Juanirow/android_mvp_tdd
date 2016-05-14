@@ -45,4 +45,13 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     public static LoginFragment getInstance() {
         return new LoginFragment();
     }
+
+    @Override
+    public String getEmail() {
+        return this.mInputEmail.getText().toString().trim();
+    }
+
+    @Override
+    public void onErrorEmailNull() {
+    }
 }
