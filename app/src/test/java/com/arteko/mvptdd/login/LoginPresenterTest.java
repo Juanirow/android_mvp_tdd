@@ -2,6 +2,7 @@ package com.arteko.mvptdd.login;
 
 import org.junit.Before;
 import org.junit.Test;
+import org.mockito.ArgumentCaptor;
 import org.mockito.Mock;
 import org.mockito.Mockito;
 import org.mockito.MockitoAnnotations;
@@ -50,4 +51,51 @@ public class LoginPresenterTest {
         this.mPresenter.onClickLoginButton();
         Mockito.verify(this.mView).showProgressDialog();
     }
+
+    @Test
+    public void shouldLoginReturnError() throws Exception {
+
+        ArgumentCaptor<LoginInteractor.OnLoginCallback> callbackCaptor
+                = ArgumentCaptor.forClass(LoginInteractor.OnLoginCallback.class);
+
+        Mockito.when(this.mView.getEmail()).thenReturn("email");
+        Mockito.when(this.mView.getPassowrd()).thenReturn("pass");
+        this.mPresenter.onClickLoginButton();
+        Mockito.verify(this.mView).showProgressDialog();
+
+        Mockito.verify(mInteractor).login(
+                Mockito.eq("email")
+                , Mockito.eq("pass")
+                , callbackCaptor.capture());
+
+        callbackCaptor.getValue().onError();
+
+        Mockito.verify(this.mView).onLoginError();
+        Mockito.verify(this.mView).hideProgressDialog();
+    }
+
+    @Test
+    public void shouldLoginReturnSuccess() throws Exception {
+
+        ArgumentCaptor<LoginInteractor.OnLoginCallback> callbackCaptor
+                = ArgumentCaptor.forClass(LoginInteractor.OnLoginCallback.class);
+
+        Mockito.when(this.mView.getEmail()).thenReturn("email");
+        Mockito.when(this.mView.getPassowrd()).thenReturn("password");
+        this.mPresenter.onClickLoginButton();
+        Mockito.verify(this.mView).showProgressDialog();
+
+        Mockito.verify(mInteractor).login(
+                Mockito.eq("email")
+                , Mockito.eq("password")
+                , callbackCaptor.capture());
+
+        callbackCaptor.getValue().onSuccess();
+
+        Mockito.verify(this.mView).onLoginSuccess();
+        Mockito.verify(this.mView).hideProgressDialog();
+    }
+
+
+
 }
