@@ -15,5 +15,12 @@ public class LoginPresenter implements LoginContract.Actions {
 
     @Override
     public void onClickLoginButton() {
+        String email;
+        String password;
+
+        email = this.mView.getEmail();
+        if(email.isEmpty()){
+            this.mView.onErrorEmailNull();
+        }
     }
 }
