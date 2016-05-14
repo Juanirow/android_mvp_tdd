@@ -10,6 +10,10 @@ public class LoginContract {
         String getEmail();
 
         void onErrorEmailNull();
+
+        String getPassowrd();
+
+        void onErrorPasswordNull();
     }
 
     public interface Actions{

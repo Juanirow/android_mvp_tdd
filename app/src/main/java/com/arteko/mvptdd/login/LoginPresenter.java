@@ -15,6 +15,5 @@ public class LoginPresenter implements LoginContract.Actions {
 
     @Override
     public void onClickLoginButton() {
-
     }
 }

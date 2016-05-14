@@ -54,4 +54,14 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     @Override
     public void onErrorEmailNull() {
     }
+
+    @Override
+    public String getPassowrd() {
+        return this.mInputPassword.getText().toString().trim();
+    }
+
+    @Override
+    public void onErrorPasswordNull() {
+
+    }
 }
