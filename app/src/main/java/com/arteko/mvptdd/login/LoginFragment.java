@@ -64,6 +64,11 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     }
 
     @Override
+    public void showProgressDialog() {
+
+    }
+
+    @Override
     public void onErrorEmailNull() {
         this.mInputEmail.setError(getString(R.string.not_null));
     }

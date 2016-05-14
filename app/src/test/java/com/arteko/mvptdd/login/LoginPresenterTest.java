@@ -42,4 +42,12 @@ public class LoginPresenterTest {
         this.mPresenter.onClickLoginButton();
         Mockito.verify(this.mView).onErrorPasswordNull();
     }
+
+    @Test
+    public void shouldShowAProgressWhenLoginRequestSend() throws Exception {
+        Mockito.when(this.mView.getEmail()).thenReturn("email");
+        Mockito.when(this.mView.getPassowrd()).thenReturn("password");
+        this.mPresenter.onClickLoginButton();
+        Mockito.verify(this.mView).showProgressDialog();
+    }
 }

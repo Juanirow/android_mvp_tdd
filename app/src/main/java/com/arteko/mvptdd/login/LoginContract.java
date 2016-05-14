@@ -18,6 +18,8 @@ public class LoginContract {
         void onLoginSuccess();
 
         void onLoginError();
+
+        void showProgressDialog();
     }
 
     public interface Actions{
