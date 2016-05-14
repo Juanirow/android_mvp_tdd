@@ -21,6 +21,13 @@ public class LoginPresenter implements LoginContract.Actions {
         email = this.mView.getEmail();
         if(email.isEmpty()){
             this.mView.onErrorEmailNull();
+            return;
+        }
+
+        password = this.mView.getPassowrd();
+        if(password.isEmpty()){
+            this.mView.onErrorPasswordNull();
+            return;
         }
     }
 }
