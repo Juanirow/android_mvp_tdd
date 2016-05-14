@@ -34,4 +34,12 @@ public class LoginPresenterTest {
         this.mPresenter.onClickLoginButton();
         Mockito.verify(this.mView).onErrorEmailNull();
     }
+
+    @Test
+    public void shouldShowErrorPasswordNull() throws Exception {
+        Mockito.when(this.mView.getEmail()).thenReturn("email");
+        Mockito.when(this.mView.getPassowrd()).thenReturn("");
+        this.mPresenter.onClickLoginButton();
+        Mockito.verify(this.mView).onErrorPasswordNull();
+    }
 }
