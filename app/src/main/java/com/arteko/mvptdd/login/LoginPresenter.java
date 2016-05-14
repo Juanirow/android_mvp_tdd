@@ -35,11 +35,13 @@ public class LoginPresenter implements LoginContract.Actions {
             @Override
             public void onSuccess() {
                 mView.onLoginSuccess();
+                mView.hideProgressDialog();
             }
 
             @Override
             public void onError() {
                 mView.onLoginError();
+                mView.hideProgressDialog();
             }
         });
     }

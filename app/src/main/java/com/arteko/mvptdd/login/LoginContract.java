@@ -20,6 +20,8 @@ public class LoginContract {
         void onLoginError();
 
         void showProgressDialog();
+
+        void hideProgressDialog();
     }
 
     public interface Actions{
