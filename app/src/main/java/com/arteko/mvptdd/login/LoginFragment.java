@@ -1,8 +1,11 @@
 package com.arteko.mvptdd.login;
 
 import android.app.Fragment;
+import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.support.annotation.Nullable;
+import android.support.v7.app.AlertDialog;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +23,7 @@ import butterknife.OnClick;
  */
 public class LoginFragment extends Fragment implements LoginContract.View {
 
+    private static final String TAG = "LoginFragment";
     @InjectView(R.id.input_email)
     EditText mInputEmail;
 
@@ -27,6 +31,8 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     EditText mInputPassword;
 
     private LoginContract.Actions mActionsListener;
+
+    private ProgressDialog mProgressDialog;
 
     @Nullable
     @Override
@@ -42,6 +48,10 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         this.mActionsListener = new LoginPresenter(this, new LoginInteractor());
+        this.mProgressDialog = new ProgressDialog(this.getActivity());
+        this.mProgressDialog.setTitle(R.string.send_credentials);
+        this.mProgressDialog.setMessage(getString(R.string.login_wait));
+        this.mProgressDialog.setCancelable(false);
     }
 
     public static LoginFragment getInstance() {
@@ -55,22 +65,26 @@ public class LoginFragment extends Fragment implements LoginContract.View {
 
     @Override
     public void onLoginSuccess() {
-
+        Log.d(TAG, "onLoginSuccess: ");
     }
 
     @Override
     public void onLoginError() {
-
+        AlertDialog.Builder builder = new AlertDialog.Builder(this.getActivity());
+        builder.setIcon(android.R.drawable.ic_delete);
+        builder.setTitle(R.string.error);
+        builder.setMessage(R.string.error_wrong_credentials);
+        builder.create().show();
     }
 
     @Override
     public void showProgressDialog() {
-
+        this.mProgressDialog.show();
     }
 
     @Override
     public void hideProgressDialog() {
-
+        this.mProgressDialog.dismiss();
     }
 
     @Override

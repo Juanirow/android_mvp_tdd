@@ -4,4 +4,8 @@
     <string name="password">Password</string>
     <string name="login">login</string>
     <string name="not_null">Can not be null</string>
+    <string name="send_credentials">Send Credentials</string>
+    <string name="login_wait">Login ....</string>
+    <string name="error">Error</string>
+    <string name="error_wrong_credentials">Wrong Credentials</string>
 </resources>
