@@ -14,6 +14,10 @@ public class LoginContract {
         String getPassowrd();
 
         void onErrorPasswordNull();
+
+        void onLoginSuccess();
+
+        void onLoginError();
     }
 
     public interface Actions{
