@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.arteko.mvptdd.R;
 
@@ -50,6 +51,16 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     @Override
     public String getEmail() {
         return this.mInputEmail.getText().toString().trim();
+    }
+
+    @Override
+    public void onLoginSuccess() {
+
+    }
+
+    @Override
+    public void onLoginError() {
+
     }
 
     @Override

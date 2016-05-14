@@ -29,5 +29,17 @@ public class LoginPresenter implements LoginContract.Actions {
             this.mView.onErrorPasswordNull();
             return;
         }
+
+        this.mInteractor.login(email, password, new LoginInteractor.OnLoginCallback() {
+            @Override
+            public void onSuccess() {
+                mView.onLoginSuccess();
+            }
+
+            @Override
+            public void onError() {
+                mView.onLoginError();
+            }
+        });
     }
 }
