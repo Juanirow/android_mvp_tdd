@@ -6,8 +6,10 @@ package com.arteko.mvptdd.login;
 public class LoginPresenter implements LoginContract.Actions {
 
     private LoginContract.View mView;
+    private LoginInteractor mInteractor;
 
-    public LoginPresenter(LoginContract.View mView) {
+    public LoginPresenter(LoginContract.View mView, LoginInteractor mInteractor) {
         this.mView = mView;
+        this.mInteractor = mInteractor;
     }
 }

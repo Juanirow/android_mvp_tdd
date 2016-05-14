@@ -39,7 +39,7 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        this.mActionsListener = new LoginPresenter(this)
+        this.mActionsListener = new LoginPresenter(this, new LoginInteractor());
     }
 
     public static LoginFragment getInstance() {
