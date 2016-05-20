@@ -15,7 +15,7 @@ import static org.junit.Assert.*;
 public class LoginPresenterTest {
 
     @Mock
-    LoginInteractor mInteractor;
+    LoginContract.InteractorActions mInteractor;
 
     @Mock
     LoginContract.View mView;
@@ -55,8 +55,8 @@ public class LoginPresenterTest {
     @Test
     public void shouldLoginReturnError() throws Exception {
 
-        ArgumentCaptor<LoginInteractor.OnLoginCallback> callbackCaptor
-                = ArgumentCaptor.forClass(LoginInteractor.OnLoginCallback.class);
+        ArgumentCaptor<ILoginServiceApi.OnLoginCallback> callbackCaptor
+                = ArgumentCaptor.forClass(ILoginServiceApi.OnLoginCallback.class);
 
         Mockito.when(this.mView.getEmail()).thenReturn("email");
         Mockito.when(this.mView.getPassowrd()).thenReturn("pass");
@@ -77,8 +77,8 @@ public class LoginPresenterTest {
     @Test
     public void shouldLoginReturnSuccess() throws Exception {
 
-        ArgumentCaptor<LoginInteractor.OnLoginCallback> callbackCaptor
-                = ArgumentCaptor.forClass(LoginInteractor.OnLoginCallback.class);
+        ArgumentCaptor<ILoginServiceApi.OnLoginCallback> callbackCaptor
+                = ArgumentCaptor.forClass(ILoginServiceApi.OnLoginCallback.class);
 
         Mockito.when(this.mView.getEmail()).thenReturn("email");
         Mockito.when(this.mView.getPassowrd()).thenReturn("password");
@@ -95,7 +95,4 @@ public class LoginPresenterTest {
         Mockito.verify(this.mView).onLoginSuccess();
         Mockito.verify(this.mView).hideProgressDialog();
     }
-
-
-
 }

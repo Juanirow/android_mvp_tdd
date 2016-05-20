@@ -28,4 +28,8 @@ public class LoginContract {
 
         void onClickLoginButton();
     }
+
+    public interface InteractorActions {
+        void login(String email, String password, ILoginServiceApi.OnLoginCallback listener);
+    }
 }

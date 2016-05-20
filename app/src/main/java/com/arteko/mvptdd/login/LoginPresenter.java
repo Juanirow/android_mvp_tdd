@@ -6,9 +6,9 @@ package com.arteko.mvptdd.login;
 public class LoginPresenter implements LoginContract.Actions {
 
     private LoginContract.View mView;
-    private LoginInteractor mInteractor;
+    private LoginContract.InteractorActions mInteractor;
 
-    public LoginPresenter(LoginContract.View mView, LoginInteractor mInteractor) {
+    public LoginPresenter(LoginContract.View mView, LoginContract.InteractorActions mInteractor) {
         this.mView = mView;
         this.mInteractor = mInteractor;
     }
@@ -31,7 +31,7 @@ public class LoginPresenter implements LoginContract.Actions {
         }
         this.mView.showProgressDialog();
 
-        this.mInteractor.login(email, password, new LoginInteractor.OnLoginCallback() {
+        this.mInteractor.login(email, password, new ILoginServiceApi.OnLoginCallback() {
             @Override
             public void onSuccess() {
                 mView.onLoginSuccess();

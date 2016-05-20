@@ -1,31 +1,31 @@
 package com.arteko.mvptdd.login;
 
 import android.os.Handler;
+import android.support.annotation.NonNull;
 
 /**
  * Created by juancho on 13/05/16.
  */
-public class LoginInteractor{
+public class LoginInteractor implements LoginContract.InteractorActions{
 
-    public interface OnLoginCallback {
+    private static LoginInteractor  mInstance = null;
 
-        void onSuccess();
+    private final ILoginServiceApi mServiceApi;
 
-        void onError();
+    public synchronized static LoginInteractor getInstace(ILoginServiceApi serviceApi){
+        if(mInstance == null){
+            mInstance = new LoginInteractor(serviceApi);
+        }
+        return mInstance;
     }
 
-    public void login(final String email, final String password, final OnLoginCallback callback){
+    public LoginInteractor(ILoginServiceApi mServiceApi) {
+        this.mServiceApi = mServiceApi;
+    }
 
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if(email.equals("email") && password.equals("password")){
-                    callback.onSuccess();
-                }
-                else{
-                    callback.onError();
-                }
-            }
-        }, 2000);
+    @Override
+    public void login(String email, String password, ILoginServiceApi.OnLoginCallback listener) {
+        this.mServiceApi.login(email, password, listener);
     }
 }
+

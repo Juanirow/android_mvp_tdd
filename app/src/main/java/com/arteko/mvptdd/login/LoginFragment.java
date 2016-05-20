@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.arteko.mvptdd.Injector;
 import com.arteko.mvptdd.R;
 
 import butterknife.ButterKnife;
@@ -47,7 +48,7 @@ public class LoginFragment extends Fragment implements LoginContract.View {
     @Override
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
-        this.mActionsListener = new LoginPresenter(this, new LoginInteractor());
+        this.mActionsListener = new LoginPresenter(this, Injector.providesInteractor());
         this.mProgressDialog = new ProgressDialog(this.getActivity());
         this.mProgressDialog.setTitle(R.string.send_credentials);
         this.mProgressDialog.setMessage(getString(R.string.login_wait));
